@@ -1,11 +1,23 @@
 body{
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: azure;
-    
- 
+    font-size: 20px;
+
+    text-align: center;
 
 }
 
 .container{
     background-color: rgb(180, 255, 161);
+}
+
+#todo-form{
+    text-align: justify;
+    padding-left: 25%;
+    padding-right: 80px;
+}
+
+h1{
+    text-align: center;
+    font-weight: bold;
 }
