@@ -9,6 +9,10 @@ body{
 
 .container{
     background-color: rgb(180, 255, 161);
+    margin: auto;
+    padding: 1rem;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 #todo-form{
