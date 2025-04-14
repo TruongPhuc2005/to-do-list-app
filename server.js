@@ -6,18 +6,11 @@ const port = 3000;
 
 app.use(express.json());
 
-// '/' is the root
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
-  res.send('Hello from the root route!');
+  res.send('Hello from the root route');
 })
-
-
-/** 
- * 
- * app.get('/todo', (req, res) =>{
- * res.json(todo);
- * })
-*/
 
 // GET
 app.get('/todo', (req, res) => {
@@ -28,8 +21,6 @@ let todo = [
   {id: 1, task: 'Buy groceries', completed: false},
   {id: 2, task: 'Learn Express.js', completed: false}
 ];
-
-
 
 /*
 app.post('/todos', (req, res) => {
@@ -46,12 +37,38 @@ app.post('/todo', (req, res) => {
     const {task, completed = false} = req.body;
     const newId = todo.length > 0 ? todo[todo.length - 1].id + 1 : 1;
     const newTodo = {id: newId, task, completed};
-    todo.push(newTodo);
+
+    todo.push(newTodo); // create new task
+
     res.status(404).json(newTodo);
 });
 
+/**
+ * app.post('/todo', (req, res) => {
+ * const {task, completed=false} = req.body;
+ * const newID = todo.length > 0 ? todo[todo.length - 1].id + 1 : 1;
+ * const newTODO = {id: newID, task, completed};
+ * 
+ * todo.push(newTODO);
+ * res.status(404).json(newTODO);
+ * })
+ */
 
 
+/* 
+app.put('/todos/:id', (req, res) => {
+  const { id } = req.params;
+  const { task, completed } = req.body;
+  const todoIndex = todos.findIndex(todo => todo.id === parseInt(id));
+  
+  if (todoIndex !== -1) {
+    // Update the todo with new values
+    todos[todoIndex] = { ...todos[todoIndex], task, completed };
+    res.json(todos[todoIndex]);
+  } else {
+    res.status(404).json({ error: 'Todo not found' });
+  }
+});*/
 
 app.put('/todo', (req, res)=>{
     const {id} = req.params;
@@ -90,7 +107,6 @@ app.delete('/todo/:id', (req, res)=>{
     res.status(404).json({error: 'Not found lolll'});
   }
 })
-
 
 
 app.listen(port, () => {
